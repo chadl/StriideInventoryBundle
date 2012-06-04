@@ -1,6 +1,7 @@
 parameters:
 #    striide_inventory.example.class: Striide\InventoryBundle\Example
 
+
 services:
 #    striide_inventory.example:
 #        class: %striide_inventory.example.class%
