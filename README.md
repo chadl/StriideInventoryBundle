@@ -1,0 +1,4 @@
+StriideInventoryBundle
+======================
+
+Simple Inventory App
