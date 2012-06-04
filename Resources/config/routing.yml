@@ -1,0 +1,3 @@
+StriideInventoryBundle_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: StriideInventoryBundle:Default:index }
