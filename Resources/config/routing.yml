@@ -1,4 +1,9 @@
 StriideInventoryBundle_homepage:
-    pattern:  /hello/{name}
+    pattern:  /
     defaults: { _controller: StriideInventoryBundle:Default:index }
+
+StriideInventoryBundle_admin:
+    resource: "@StriideInventoryBundle/Resources/config/routing/item.yml"
+    prefix:   /admin/item
+
 

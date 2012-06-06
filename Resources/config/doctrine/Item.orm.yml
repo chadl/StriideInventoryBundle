@@ -1,0 +1,25 @@
+Striide\InventoryBundle\Entity\Item:
+  type: entity
+  table: striide_inventory_item
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    name:
+      type: string
+      length: 255
+    quantity:
+      type: integer
+    description:
+      type: text
+    type:
+      type: string
+      length: 255
+    created_at:
+      type: datetime
+    updated_at:
+      type: datetime
+  lifecycleCallbacks:
+    preUpdate: [ preUpdate ]

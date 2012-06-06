@@ -1,0 +1,44 @@
+{% extends "StriideInventoryBundle::layout.html.twig" %}
+
+{% block striide_inventory_content %}
+
+{% render 'StriideTwitterbootstrapBundle:Navigation:breadcrumb' with {'crumbs': crumbs} %}
+
+{% form_theme edit_form edit_form_theme %}
+
+<div class="row">
+  <div class="span2 well">
+
+    <p>
+      <a class="btn" href="{{ path('StriideInventoryBundle_homepage') }}"><i class="icon-list-alt"></i> Back to list</a>
+    </p>
+
+{% if is_granted('ROLE_ADMIN') %}
+    <form autocomplete="off" action="{{ path('StriideInventoryBundle_admin_item_delete', { 'id': entity.id }) }}" method="post">
+        {{ form_widget(delete_form) }}
+        <button class="btn btn-danger" type="submit"><i class="icon-minus-sign icon-white"></i> Delete</button>
+    </form>
+{% endif %}
+  </div>
+
+  <div class="span8">
+
+    <h3>Edit Item</h3>
+    <form action="{{ path('StriideInventoryBundle_admin_item_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }} class="form-horizontal">
+      {{ form_widget(edit_form) }}
+      <div class="form-actions">
+        <button class="btn btn-primary btn-large" type="submit">Save</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+<script>
+  $(function(){
+    var availableTypes = {{ json_types|raw }};
+    $('form input.type').typeahead({source: availableTypes });
+  });
+</script>
+
+{% endblock striide_inventory_content %}

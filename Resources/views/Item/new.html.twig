@@ -1,0 +1,35 @@
+{% extends "StriideInventoryBundle::layout.html.twig" %}
+
+{% block striide_inventory_content %}
+
+{% render 'StriideTwitterbootstrapBundle:Navigation:breadcrumb' with {'crumbs': crumbs} %}
+
+{% form_theme form form_theme %}
+
+<div class="row">
+  <div class="span2 well">
+    <p>
+      <a class="btn" href="{{ path('StriideInventoryBundle_homepage') }}"><i class="icon-list-alt"></i> Back to List</a>
+    </p>
+  </div>
+
+  <div class="span8">
+
+    <h3>Create new Item</h3>
+    <form autocomplete="off" action="{{ path('StriideInventoryBundle_admin_item_create') }}" method="post" {{ form_enctype(form) }} class="form-horizontal">
+    {{ form_widget(form) }}
+      <div class="form-actions">
+        <button class="btn btn-primary btn-large" type="submit">Create</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  $(function(){
+    var availableTypes = {{ json_types|raw }};
+    $('form input.type').typeahead({source: availableTypes });
+  });
+</script>
+
+{% endblock striide_inventory_content %}

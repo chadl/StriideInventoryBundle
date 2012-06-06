@@ -3,6 +3,6 @@ parameters:
 
 
 services:
-#    striide_inventory.example:
-#        class: %striide_inventory.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+  striide_inventory.types:
+    class: Striide\InventoryBundle\Service\TypeService
+    arguments: [@doctrine]

@@ -1,2 +1,22 @@
-Hello {{ name }}!
+{% extends "StriideInventoryBundle::layout.html.twig" %}
 
+{% block striide_inventory_content %}
+
+{% render 'StriideTwitterbootstrapBundle:Navigation:breadcrumb' with {'crumbs': crumbs} %}
+
+<div class="row">
+  {% if is_granted('ROLE_ADMIN') %}
+  <div class="span2 well">
+    <p>
+      <a class="btn btn-primary" href="{{ path('StriideInventoryBundle_admin_item_new') }}"><i class="icon-plus-sign icon-white"></i> Create New Item</a>
+    </p>
+  </div>
+  {% endif %}
+
+  <div class="{% if is_granted('ROLE_ADMIN') %}span8{% else %}span10{% endif %}">
+    <h3>Existing Inventory</h3>
+    {% include 'StriideInventoryBundle:Item:_list.html.twig' with { 'entities': items } %}
+  </div>
+</div>
+
+{% endblock striide_inventory_content %}

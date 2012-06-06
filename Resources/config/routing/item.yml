@@ -1,0 +1,30 @@
+StriideInventoryBundle_admin_item:
+    pattern:  /
+    defaults: { _controller: "StriideInventoryBundle:Item:index" }
+
+StriideInventoryBundle_admin_item_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "StriideInventoryBundle:Item:show" }
+
+StriideInventoryBundle_admin_item_new:
+    pattern:  /new
+    defaults: { _controller: "StriideInventoryBundle:Item:new" }
+
+StriideInventoryBundle_admin_item_create:
+    pattern:  /create
+    defaults: { _controller: "StriideInventoryBundle:Item:create" }
+    requirements: { _method: post }
+
+StriideInventoryBundle_admin_item_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "StriideInventoryBundle:Item:edit" }
+
+StriideInventoryBundle_admin_item_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "StriideInventoryBundle:Item:update" }
+    requirements: { _method: post }
+
+StriideInventoryBundle_admin_item_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "StriideInventoryBundle:Item:delete" }
+    requirements: { _method: post }
