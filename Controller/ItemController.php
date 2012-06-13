@@ -93,15 +93,16 @@ class ItemController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
-            $em->persist($entity);
-            $em->flush();
 
-            if($photo = $entity->getPhoto()  && !empty($photo))
+            $photo = $entity->getPhoto();
+            if(!empty($photo))
             {
               $media = $this->get('striide_inventory.service.media')->save($entity->getPhoto());
               $entity->setPhoto($media->getId());
-              $em->flush();
             }
+
+            $em->persist($entity);
+            $em->flush();
 
             return $this->redirect($this->generateUrl('StriideInventoryBundle_admin_item_show', array('id' => $entity->getId())));
 
