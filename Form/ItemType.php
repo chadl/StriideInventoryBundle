@@ -17,6 +17,7 @@ class ItemType extends AbstractType
               'attr' => array('class' => 'type autocomplete')
               )
             )
+            ->add('photo','file', array('required' => false))
         ;
     }
 

@@ -6,3 +6,6 @@ services:
   striide_inventory.types:
     class: Striide\InventoryBundle\Service\TypeService
     arguments: [@doctrine]
+  striide_inventory.service.media:
+    class: Striide\InventoryBundle\Service\MediaService
+    arguments: ['sonata.media.provider.image','default',@sonata.media.manager.media]

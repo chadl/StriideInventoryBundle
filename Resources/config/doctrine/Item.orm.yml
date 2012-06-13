@@ -17,6 +17,10 @@ Striide\InventoryBundle\Entity\Item:
     type:
       type: string
       length: 255
+    photo:
+      type: string
+      nullable: true
+      length: 255
     created_at:
       type: datetime
     updated_at:

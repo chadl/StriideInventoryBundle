@@ -26,6 +26,9 @@
     <h3>Edit Item</h3>
     <form action="{{ path('StriideInventoryBundle_admin_item_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }} class="form-horizontal">
       {{ form_widget(edit_form) }}
+
+      {% render 'StriideInventoryBundle:Media:show' with {'id': entity.photo } %}
+
       <div class="form-actions">
         <button class="btn btn-primary btn-large" type="submit">Save</button>
       </div>

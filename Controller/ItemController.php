@@ -96,6 +96,13 @@ class ItemController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            if($photo = $entity->getPhoto()  && !empty($photo))
+            {
+              $media = $this->get('striide_inventory.service.media')->save($entity->getPhoto());
+              $entity->setPhoto($media->getId());
+              $em->flush();
+            }
+
             return $this->redirect($this->generateUrl('StriideInventoryBundle_admin_item_show', array('id' => $entity->getId())));
 
         }
@@ -155,6 +162,7 @@ class ItemController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
 
         $entity = $em->getRepository('StriideInventoryBundle:Item')->find($id);
+        $photo = $entity->getPhoto();
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Item entity.');
@@ -167,11 +175,23 @@ class ItemController extends Controller
 
         $editForm->bindRequest($request);
 
-        if ($editForm->isValid()) {
-            $em->persist($entity);
-            $em->flush();
+        if ($editForm->isValid())
+        {
+          $p = $entity->getPhoto();
+          if(empty($p) && !empty($photo))
+          {
+            $entity->setPhoto($photo);
+          }
+          else if(!empty($p))
+          {
+            $media = $this->get('striide_inventory.service.media')->save($entity->getPhoto());
+            $entity->setPhoto($media->getId());
+          }
 
-            return $this->redirect($this->generateUrl('StriideInventoryBundle_admin_item_show', array('id' => $id)));
+          $em->persist($entity);
+          $em->flush();
+
+          return $this->redirect($this->generateUrl('StriideInventoryBundle_admin_item_show', array('id' => $id)));
         }
 
         return $this->render('StriideInventoryBundle:Item:edit.html.twig', array(
