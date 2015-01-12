@@ -2,7 +2,7 @@
 
 {% block striide_inventory_content %}
 
-{% render 'StriideTwitterbootstrapBundle:Navigation:breadcrumb' with {'crumbs': crumbs} %}
+{{ render(controller('StriideTwitterbootstrapBundle:Navigation:breadcrumb',{'crumbs': crumbs} )) }}
 
 {% form_theme edit_form edit_form_theme %}
 
@@ -27,7 +27,7 @@
     <form action="{{ path('StriideInventoryBundle_admin_item_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }} class="form-horizontal">
       {{ form_widget(edit_form) }}
 
-      {% render 'StriideInventoryBundle:Media:show' with {'id': entity.photo } %}
+      {{ render(controller('StriideInventoryBundle:Media:show', {'id': entity.photo })) }}
 
       <div class="form-actions">
         <button class="btn btn-primary btn-large" type="submit">Save</button>

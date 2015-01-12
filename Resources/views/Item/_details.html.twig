@@ -23,4 +23,4 @@
     </tbody>
 </table>
 
-{% render 'StriideInventoryBundle:Media:show' with {'id': entity.photo } %}
+{{ render(controller('StriideInventoryBundle:Media:show', {'id': entity.photo })) }}

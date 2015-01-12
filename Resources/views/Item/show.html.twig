@@ -2,7 +2,7 @@
 
 {% block striide_inventory_content %}
 
-{% render 'StriideTwitterbootstrapBundle:Navigation:breadcrumb' with {'crumbs': crumbs} %}
+{{ render(controller('StriideTwitterbootstrapBundle:Navigation:breadcrumb',{'crumbs': crumbs} )) }}
 
 <div class="row">
   <div class="span2 well">
@@ -29,7 +29,7 @@
   <div class="span8">
 
     <h3>Item: {{ entity }}</h3>
-    {% include 'StriideInventoryBundle:Item:_details.html.twig' with {'entity': entity } %}
+      {{ include('StriideInventoryBundle:Item:_details.html.twig', { 'entity': entity }) }}
   </div>
 </div>
 
