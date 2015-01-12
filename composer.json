@@ -1,0 +1,24 @@
+{
+	"name": "striide/inventory-bundle",
+	"type": "symfony-bundle",
+	"description": "Useful Inventory App Features.",
+	"keywords": ["symfony2", "utility", "inventory"],
+	"homepage": "https://github.com/chadl/StriideInventoryBundle.git",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Chad Lindstrom",
+			"email": "chad.lindstrom@gmail.com"
+		}
+	],
+	"require": {
+		"php": ">=5.3.2"
+	},
+	"minimum-stability": "dev",
+	"autoload": {
+		"psr-0": {
+			"Striide\\InventoryBundle": ""
+		}
+	},
+	"target-dir": "Striide/InventoryBundle"
+}
