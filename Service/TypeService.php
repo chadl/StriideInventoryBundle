@@ -15,7 +15,7 @@ class TypeService
 
     $sql = " SELECT distinct(type) FROM striide_inventory_item";
 
-    $stmt = $this->doctrine->getEntityManager()->getConnection()->prepare($sql);
+    $stmt = $this->doctrine->getManager()->getConnection()->prepare($sql);
     $stmt->execute();
     $all = $stmt->fetchAll();
 
