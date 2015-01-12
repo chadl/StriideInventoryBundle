@@ -6,7 +6,7 @@ class DefaultController extends Controller
 {
   public function indexAction()
   {
-    $em = $this->getDoctrine()->getEntityManager();
+    $em = $this->getDoctrine()->getManager();
     $items = $em->getRepository('StriideInventoryBundle:Item')->findAll();
 
     return $this->render('StriideInventoryBundle:Default:index.html.twig', array(

@@ -19,7 +19,7 @@ class ItemController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('StriideInventoryBundle:Item')->findAll();
 
@@ -34,7 +34,7 @@ class ItemController extends Controller
      */
     public function showAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('StriideInventoryBundle:Item')->find($id);
 
@@ -89,10 +89,10 @@ class ItemController extends Controller
         $entity  = new Item();
         $request = $this->getRequest();
         $form    = $this->createForm(new ItemType(), $entity);
-        $form->bindRequest($request);
+        $form->handleRequest ($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getDoctrine()->getManager();
 
             $photo = $entity->getPhoto();
             if(!empty($photo))
@@ -128,7 +128,7 @@ class ItemController extends Controller
      */
     public function editAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('StriideInventoryBundle:Item')->find($id);
 
@@ -160,7 +160,7 @@ class ItemController extends Controller
      */
     public function updateAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('StriideInventoryBundle:Item')->find($id);
         $photo = $entity->getPhoto();
@@ -174,7 +174,7 @@ class ItemController extends Controller
 
         $request = $this->getRequest();
 
-        $editForm->bindRequest($request);
+        $editForm->handleRequest($request);
 
         if ($editForm->isValid())
         {
@@ -222,7 +222,7 @@ class ItemController extends Controller
         $form->bindRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('StriideInventoryBundle:Item')->find($id);
 
             if (!$entity) {
