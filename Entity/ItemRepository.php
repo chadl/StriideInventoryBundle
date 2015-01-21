@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class ItemRepository extends EntityRepository
 {
+    /**
+     * get all items by type
+     * @param string $type
+     */
+    public function findByType($type)
+    {
+        return $this->getEntityManager()->findAllBy(
+            array('type' => $type)
+        );
+    }
 }

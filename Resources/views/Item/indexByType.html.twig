@@ -1,0 +1,32 @@
+{% extends "StriideInventoryBundle::layout.html.twig" %}
+
+{% block striide_inventory_content %}
+
+<div class="row">
+       
+
+  <div class="span2">
+      
+      {% if is_granted('ROLE_ADMIN') %}
+        <ul class="nav nav-tabs nav-stacked">
+            <li>
+                <a href="{{ path('StriideInventoryBundle_admin_item_new') }}"><i class="icon-plus-sign"></i> Create a new Item</a>
+            </li>
+        </ul>
+      {% endif %}
+      
+    {{ render(controller('StriideInventoryBundle:Item:types' )) }}
+    
+  </div>
+
+
+  <div class="span8">
+      <h3>{{type}} Items</h3>
+
+      {{ include('StriideInventoryBundle:Item:_list.html.twig', { 'entities': entities }) }}
+
+  </div>
+</div>
+
+
+{% endblock striide_inventory_content %}

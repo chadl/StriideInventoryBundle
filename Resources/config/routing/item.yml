@@ -2,6 +2,10 @@ StriideInventoryBundle_admin_item:
     pattern:  /
     defaults: { _controller: "StriideInventoryBundle:Item:index" }
 
+StriideInventoryBundle_admin_type:
+    pattern:  /type/{type}
+    defaults: { _controller: "StriideInventoryBundle:Item:indexByType" }
+
 StriideInventoryBundle_admin_item_show:
     pattern:  /{id}/show
     defaults: { _controller: "StriideInventoryBundle:Item:show" }
