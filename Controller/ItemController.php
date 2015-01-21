@@ -27,6 +27,41 @@ class ItemController extends Controller
             'entities' => $entities
         ));
     }
+    
+    /**
+     * Lists all Items by type.
+     *
+     */
+    public function indexByTypeAction($type)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('StriideInventoryBundle:Item')->findByType($type);
+
+        return $this->render('StriideInventoryBundle:Item:indexByType.html.twig', array(
+            'entities' => $entities,
+            'type' => $type
+        ));
+    }
+    
+    /**
+     * Lists all types
+     *
+     */
+    public function typesAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $sql = "SELECT count(*) as count, type FROM striide_inventory_item GROUP BY type";
+
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute();
+        $types = $stmt->fetchAll();
+
+        return $this->render('StriideInventoryBundle:Item:_types.html.twig', array(
+            'types' => $types
+        ));
+    }
 
     /**
      * Finds and displays a Item entity.

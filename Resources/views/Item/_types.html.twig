@@ -1,0 +1,11 @@
+{% if types is defined and types|count > 0 %}
+
+    <ul class="nav nav-list">
+
+        <li class="nav-header">Types</li>
+        {% for pairs in types %}
+        <li><a href="{{ path('StriideInventoryBundle_admin_type',{'type': pairs.type}) }}">{{ pairs.type }} <span class="badge">{{ pairs.count }}</span></a></li>
+        {% endfor %}
+    </ul>
+
+{% endif %}

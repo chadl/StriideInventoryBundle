@@ -5,31 +5,37 @@
 {{ render(controller('StriideTwitterbootstrapBundle:Navigation:breadcrumb',{'crumbs': crumbs} )) }}
 
 <div class="row">
-  <div class="span2 well">
+  <div class="span2">
 
-    <p>
-      <a class="btn" href="{{ path('StriideInventoryBundle_homepage') }}"><i class="icon-list-alt"></i> Back to list</a>
-    </p>
+    <ul class="nav nav-tabs nav-stacked">
+        <li>
+            <a href="{{ path('StriideInventoryBundle_homepage') }}"><i class="icon-list-alt"></i> Back to list</a>
+        </li>
 
 {% if is_granted('ROLE_ADMIN') %}
-    <p>
-      <a class="btn btn-primary" href="{{ path('StriideInventoryBundle_admin_item_new') }}"><i class="icon-plus-sign icon-white"></i> Create New Item</a>
-    </p>
-    <p>
-      <a class="btn btn-primary" href="{{ path('StriideInventoryBundle_admin_item_edit', { 'id': entity.id }) }}"><i class="icon-edit icon-white"></i> Edit item</a>
-    </p>
-
-    <form action="{{ path('StriideInventoryBundle_admin_item_delete', { 'id': entity.id }) }}" method="post">
-        {{ form_widget(delete_form) }}
-        <button class="btn btn-danger" type="submit"><i class="icon-minus-sign icon-white"></i> Delete</button>
-    </form>
+    <li>
+      <a  href="{{ path('StriideInventoryBundle_admin_item_new') }}"><i class="icon-plus-sign"></i> Create New Item</a>
+    </li>
 {% endif %}
+    </ul>
+      
+{{ render(controller('StriideInventoryBundle:Item:types' )) }}
+      
   </div>
 
   <div class="span8">
 
     <h3>Item: {{ entity }}</h3>
       {{ include('StriideInventoryBundle:Item:_details.html.twig', { 'entity': entity }) }}
+      
+      
+      <form action="{{ path('StriideInventoryBundle_admin_item_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            
+          <a class="btn btn-primary" href="{{ path('StriideInventoryBundle_admin_item_edit', { 'id': entity.id }) }}"><i class="icon-edit icon-white"></i> Edit item</a>
+          
+          <button class="btn btn-danger" type="submit"><i class="icon-minus-sign icon-white"></i> Delete</button>
+        </form>
   </div>
 </div>
 

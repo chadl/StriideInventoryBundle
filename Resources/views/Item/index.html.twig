@@ -6,12 +6,12 @@
 
 {{ include('StriideInventoryBundle:Item:_list.html.twig', { 'entities': entities }) }}
 
-<ul>
+<ul class="nav nav-tabs nav-stacked">
     <li>
-        <a href="{{ path('StriideInventoryBundle_admin_item_new') }}">
-            Create a new entry
-        </a>
+        <a href="{{ path('StriideInventoryBundle_admin_item_new') }}">Create a new entry</a>
     </li>
 </ul>
+
+{{ render(controller('StriideInventoryBundle:Item:types' )) }}
 
 {% endblock striide_inventory_content %}

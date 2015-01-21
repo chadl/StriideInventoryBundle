@@ -5,11 +5,19 @@
 {{ render(controller('StriideTwitterbootstrapBundle:Navigation:breadcrumb',{'crumbs': crumbs} )) }}
 
 <div class="row">
+       
   {% if is_granted('ROLE_ADMIN') %}
-  <div class="span2 well">
-    <p>
-      <a class="btn btn-primary" href="{{ path('StriideInventoryBundle_admin_item_new') }}"><i class="icon-plus-sign icon-white"></i> Create New Item</a>
-    </p>
+  <div class="span2">
+    
+    <ul class="nav nav-tabs nav-stacked">
+        <li>
+            <a href="{{ path('StriideInventoryBundle_admin_item_new') }}"><i class="icon-plus-sign"></i> Create a new Item</a>
+        </li>
+    </ul>
+
+    {{ render(controller('StriideInventoryBundle:Item:types' )) }}
+
+    
   </div>
   {% endif %}
 

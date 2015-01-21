@@ -7,10 +7,17 @@
 {% form_theme form form_theme %}
 
 <div class="row">
-  <div class="span2 well">
-    <p>
-      <a class="btn" href="{{ path('StriideInventoryBundle_homepage') }}"><i class="icon-list-alt"></i> Back to List</a>
-    </p>
+    <div class="span2">
+
+    <ul class="nav nav-tabs nav-stacked">
+        <li>
+            <a href="{{ path('StriideInventoryBundle_homepage') }}"><i class="icon-list-alt"></i> Back to list</a>
+        </li>
+
+    </ul>
+      
+{{ render(controller('StriideInventoryBundle:Item:types' )) }}
+      
   </div>
 
   <div class="span8">
