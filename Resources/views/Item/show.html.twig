@@ -28,7 +28,7 @@
     <h3>Item: {{ entity }}</h3>
       {{ include('StriideInventoryBundle:Item:_details.html.twig', { 'entity': entity }) }}
       
-      
+{% if is_granted('ROLE_ADMIN') %}      
       <form action="{{ path('StriideInventoryBundle_admin_item_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
             
@@ -36,6 +36,7 @@
           
           <button class="btn btn-danger" type="submit"><i class="icon-minus-sign icon-white"></i> Delete</button>
         </form>
+{% endif %}
   </div>
 </div>
 
