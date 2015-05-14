@@ -4,6 +4,7 @@ namespace Striide\InventoryBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Form\FormBuilderInterface;
     
 class ItemType extends AbstractType
@@ -18,7 +19,7 @@ class ItemType extends AbstractType
               'attr' => array('class' => 'type autocomplete')
               )
             )
-            ->add('photo','file', array('required' => false))
+            ->add('photo','file', array('required' => false, 'data_class' => null) )
         ;
     }
 
